@@ -12,19 +12,22 @@ import (
  *
  */
 func main() {
-	fmt.Println("6: ", isPalindrome(6))
-	fmt.Println("36: ", isPalindrome(36))
-	fmt.Println("33: ", isPalindrome(33))
-	fmt.Println("363: ", isPalindrome(363))
-	fmt.Println("364: ", isPalindrome(364))
-	fmt.Println("3663: ", isPalindrome(3663))
-	fmt.Println("3664: ", isPalindrome(3664))
-	fmt.Println("36463: ", isPalindrome(36463))
-	fmt.Println("36464: ", isPalindrome(36464))
-	fmt.Println("364463: ", isPalindrome(364463))
-	fmt.Println("364464: ", isPalindrome(364464))
+	fmt.Println(findTheAnswer4())
 }
-
+func findTheAnswer4() int {
+	var max int
+	for i := 999; i >= 800; i-- {
+		for j := 999; j >= 800; j-- {
+			product := i * j
+			if isPalindrome(product) {
+				if product > max {
+					max = product
+				}
+			}
+		}
+	}
+	return max
+}
 func isPalindrome(n int) bool {
 	boolly := true
 	digit := numOfDigits(n)
